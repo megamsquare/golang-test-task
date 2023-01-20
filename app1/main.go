@@ -24,7 +24,7 @@ func main() {
 			return
 		}
 
-		conn, err := amqp.Dial("amqp://user:password@rabbitmq:5672/")
+		conn, err := amqp.Dial("amqp://user:password@localhost:5672/")
 		if err != nil {
 			ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
@@ -71,5 +71,5 @@ func main() {
 		ctx.JSON(http.StatusOK, gin.H{"message": "message sent"})
 	})
 
-	r.Run()
+	r.Run(":8080")
 }

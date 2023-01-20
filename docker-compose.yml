@@ -1,14 +1,30 @@
 version: '3.6'
 
 services:
+  # app1:
+  #   build:
+  #     context: ./app1
+  #   ports:
+  #     - "8080:8080"
+  #   depends_on:
+  #     - rabbitmq
+
+  # app_2:
+  #   build:
+  #     context: ./app2
+  #   ports:
+  #     - "8081:8081"
+  #   depends_on:
+  #     - rabbitmq
+  #     - redis
 
   rabbitmq:
     image: rabbitmq:3.7-management
     container_name: rabbitmq
     hostname: rabbitmq
     ports:
-      - "7000:15672"
-      - "7001:5672"
+      - "15672:15672"
+      - "5672:5672"
     environment:
       - RABBITMQ_DEFAULT_USER=user
       - RABBITMQ_DEFAULT_PASS=password
