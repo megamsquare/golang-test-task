@@ -1,22 +1,33 @@
 version: '3.6'
 
 services:
-  # app1:
-  #   build:
-  #     context: ./app1
-  #   ports:
-  #     - "8080:8080"
-  #   depends_on:
-  #     - rabbitmq
+  app1:
+    build:
+      context: ./app1
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - rabbitmq
 
-  # app_2:
-  #   build:
-  #     context: ./app2
-  #   ports:
-  #     - "8081:8081"
-  #   depends_on:
-  #     - rabbitmq
-  #     - redis
+  app2:
+    build:
+      context: ./app2
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    depends_on:
+      - rabbitmq
+      - redis
+
+  app3:
+    build:
+      context: ./app3
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8082"
+    depends_on:
+      - redis
 
   rabbitmq:
     image: rabbitmq:3.7-management
